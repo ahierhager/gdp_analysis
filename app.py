@@ -87,6 +87,18 @@ def main():
     plt.tight_layout()
     st.pyplot(plt)
 
+    # Plot histogram of GDP per capita
+    st.subheader("Histogram of GDP Per Capita")
+    gdp_data_melted = gdp_data.melt(
+        id_vars=["Country"], var_name="Year", value_name="GDP_Per_Capita"
+    )
+    plt.figure(figsize=(10, 6))
+    sns.histplot(gdp_data_melted["GDP_Per_Capita"], bins=30, kde=True)
+    plt.title("Histogram of GDP Per Capita")
+    plt.xlabel("GDP Per Capita")
+    plt.ylabel("Frequency")
+    st.pyplot(plt)
+
     # Plot GDP per capita over time
     st.subheader("GDP Per Capita Over Time")
     countries = gdp_data["Country"].unique()
@@ -103,18 +115,6 @@ def main():
     plt.xlabel("Year")
     plt.ylabel("GDP Per Capita")
     plt.xticks(rotation=45, fontsize=8)
-    st.pyplot(plt)
-
-    # Plot histogram of GDP per capita
-    st.subheader("Histogram of GDP Per Capita")
-    gdp_data_melted = gdp_data.melt(
-        id_vars=["Country"], var_name="Year", value_name="GDP_Per_Capita"
-    )
-    plt.figure(figsize=(10, 6))
-    sns.histplot(gdp_data_melted["GDP_Per_Capita"], bins=30, kde=True)
-    plt.title("Histogram of GDP Per Capita")
-    plt.xlabel("GDP Per Capita")
-    plt.ylabel("Frequency")
     st.pyplot(plt)
 
 
